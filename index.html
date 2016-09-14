@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<script src="angular/angular.js"></script>
+	<title>carrito sergio</title>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body ng-controller="mainctrl" style="background-color:#222;color:white;">
+	
+	<div class="col-xs-4" style="background-color:#3F51B5">
+		<h2 style="text-align:center">Lista de articulos</h2>
+		<ul style="float:left">
+			<marquee class="col-xs-12 col-offset-" direction="up" style="border:0px solid black" scrolldelay="100">
+			<li ng-repeat="arti in articulos" style="margin-top:30px">
+				<img src="{{arti.img}}" width="80" height="100">
+				{{arti.Nombre}}, $ {{arti.precio}}, {{arti.desc}}
+				<button ng-click="add(arti)">Agregar</button>
+			</li>		
+			</marquee>
+
+		</ul>
+	</div>
+
+	<div class="col-xs-8" style="background-color:#424242">
+		<h3 style="text-align:center">Mi carrito de compras</h3>
+		<li id="hola" ng-repeat="comp in carrito" ng-show="carrito.length>0" style="margin-left:30px">
+		
+		<script type="text/javascript">
+			 document.getElementById('hola').innerHTML = "<img src='{{comp.img}}' width='80' height='100'>					{{comp.Nombre}}, $ {{comp.precio}}, {{comp.desc}}";
+		</script>
+</li>
+	</div>
+		
+
+</body>
+</html>
+
+<script type="text/javascript">
+function mainctrl($scope){
+
+	$scope.articulos=[
+		{
+			"Nombre":"Mustang",
+			"precio":"129.00",
+			"desc":"White color",
+			"img":"http://www.nocturnar.com/imagenes/autos-tuning/autos-tuning-578219_10151418107703887_1650270000_n.jpg"
+		},
+		{
+			"Nombre":"Nissan",
+			"precio":"129.00",
+			"desc":"Color azul",
+			"img":"http://autos.starmedia.com/imagenes/2015/02/caracteristicas-nuevo-auto-electrico-quantino.jpg"
+		},
+		{
+			"Nombre":"Toyota",
+			"precio":"129.00",
+			"desc":"Color rojo",
+			"img":"http://50.56.217.25/imagesPosts/Toyota_Prius_a_prueba.jpg"
+		}
+	];
+
+
+$scope.carrito=[
+		
+	];
+
+	$scope.add =  function (arti)
+	{
+		$scope.carrito.push(arti);			
+	}
+	
+}
+</script>
+
